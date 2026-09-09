@@ -1,7 +1,7 @@
 {
   "name": "Учебен план – Математика",
   "short_name": "Мат. план",
-  "description": "Учебно разпределение за VIII и IX клас с отбелязване на взетите теми и синхронизация.",
+  "description": "Учебно разпределение за 8.A, 8.B, 8.C, 9.A и 9.B с отделно отбелязване на взетите теми и синхронизация.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
@@ -9,7 +9,15 @@
   "theme_color": "#0f7f8f",
   "lang": "bg",
   "icons": [
-    {"src":"icons/icon-192.png","sizes":"192x192","type":"image/png"},
-    {"src":"icons/icon-512.png","sizes":"512x512","type":"image/png"}
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
   ]
 }

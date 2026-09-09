@@ -17,7 +17,7 @@
     h1{font-size:1.15rem;margin:0}.sub{font-size:.82rem;opacity:.92}
     .head-actions{display:flex;gap:8px;flex-wrap:wrap}.head-actions button{border:1px solid rgba(255,255,255,.45);background:rgba(255,255,255,.14);color:white;border-radius:10px;padding:8px 11px}
     main{max-width:1100px;margin:18px auto;padding:0 14px 40px}
-    .toolbar{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;margin-bottom:14px}.tabs{display:flex;gap:6px}.tab{border:1px solid var(--line);background:var(--card);border-radius:12px;padding:9px 14px;font-weight:700;color:var(--ink)}.tab.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+    .toolbar{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;margin-bottom:14px}.tabs{display:flex;gap:6px}.section-tab{border:1px solid var(--line);background:var(--card);border-radius:12px;padding:9px 14px;font-weight:700;color:var(--ink)}.section-tab.active{background:var(--accent);color:#fff;border-color:var(--accent)}
     .search{width:100%;border:1px solid var(--line);background:white;border-radius:12px;padding:10px 12px}.filter{border:1px solid var(--line);background:white;border-radius:12px;padding:10px}
     .summary{display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 16px;box-shadow:var(--shadow);margin-bottom:14px}.progress{height:12px;background:#e7f0f2;border-radius:999px;overflow:hidden;margin-top:8px}.bar{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));width:0}.pct{font-weight:800;font-size:1.2rem;color:var(--accent)}
     .week{background:var(--card);border:1px solid var(--line);border-radius:16px;margin:12px 0;box-shadow:var(--shadow);overflow:hidden}.weekhead{padding:11px 14px;background:#eef7f8;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between}.weekhead strong{color:var(--accent)}
@@ -33,7 +33,7 @@
 <body>
 <header>
   <div class="headrow">
-    <div><h1>Учебен план – Математика</h1><div class="sub">VIII и IX клас • отметки, бележки и редактиране на темите</div></div>
+    <div><h1>Учебен план – Математика</h1><div class="sub">8.A, 8.B, 8.C, 9.A и 9.B • отделни отметки, дати и бележки</div></div>
     <div class="head-actions">
       <span id="syncStatus" class="status">Локално</span>
       <button id="installBtn" hidden>Инсталирай</button>
@@ -44,11 +44,17 @@
 </header>
 <main>
   <div class="toolbar">
-    <div class="tabs"><button class="tab active" data-class="8">8. клас</button><button class="tab" data-class="9">9. клас</button></div>
+    <div class="tabs section-tabs">
+      <button class="section-tab active" data-section="8A">8.A</button>
+      <button class="section-tab" data-section="8B">8.B</button>
+      <button class="section-tab" data-section="8C">8.C</button>
+      <button class="section-tab" data-section="9A">9.A</button>
+      <button class="section-tab" data-section="9B">9.B</button>
+    </div>
     <input id="search" class="search" placeholder="Търси тема…" />
     <select id="filter" class="filter"><option value="all">Всички</option><option value="todo">Невзети</option><option value="done">Взети</option></select>
   </div>
-  <section class="summary"><div><strong id="sumTitle">8. клас</strong><div class="small" id="sumText"></div><div class="progress"><div id="bar" class="bar"></div></div></div><div id="pct" class="pct">0%</div></section>
+  <section class="summary"><div><strong id="sumTitle">8.A паралелка</strong><div class="small" id="sumText"></div><div class="progress"><div id="bar" class="bar"></div></div></div><div id="pct" class="pct">0%</div></section>
   <div id="weeks"></div>
 </main>
 
@@ -66,8 +72,8 @@
 <dialog id="backupDialog">
   <div class="modalhead"><strong>Архив и прехвърляне</strong><button class="secondary" onclick="this.closest('dialog').close()">Затвори</button></div>
   <div class="modalbody">
-    <p>Можете да запазите резервно копие на всички отметки и бележки или да възстановите такова копие.</p>
-    <div class="actions"><button id="exportBtn" class="primary">Изтегли архив (.json)</button><label class="secondary" style="display:inline-flex;align-items:center">Възстанови архив<input id="importFile" type="file" accept="application/json" hidden></label><button id="resetBtn" class="danger">Изчисти отметките</button></div>
+    <p>Можете да запазите резервно копие на отметките, датите, редакциите и бележките за всички паралелки или да възстановите такова копие.</p>
+    <div class="actions"><button id="exportBtn" class="primary">Изтегли архив (.json)</button><label class="secondary" style="display:inline-flex;align-items:center">Възстанови архив<input id="importFile" type="file" accept="application/json" hidden></label><button id="resetBtn" class="danger">Изчисти всички паралелки</button></div>
   </div>
 </dialog>
 
