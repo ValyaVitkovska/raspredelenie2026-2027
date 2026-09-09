@@ -1,4 +1,4 @@
-const CACHE='math-planner-v3';
+const CACHE='math-planner-v4';
 const FILES=['./','./index.html','./app.js','./data.js','./manifest.webmanifest','./icons/icon-192.png','./icons/icon-512.png'];
 self.addEventListener('install',e=>{self.skipWaiting();e.waitUntil(caches.open(CACHE).then(c=>c.addAll(FILES)))});
 self.addEventListener('activate',e=>e.waitUntil(Promise.all([

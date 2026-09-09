@@ -98,7 +98,9 @@ function render(){
     const w=document.createElement('section');
     w.className='week';
     const weekAll=all.filter(x=>x.week===week), wd=weekAll.filter(x=>x.done).length;
-    w.innerHTML=`<div class="weekhead"><strong>Учебна седмица ${week}</strong><span class="small">${currentLabel()}: ${wd}/${weekAll.length} взети</span></div>`;
+    const cal=WEEK_CALENDAR_2026_2027[week];
+    const calHtml=cal ? `<span class="weekdate" title="Учебни дни: ${esc(cal.detail)}${cal.note?` • ${esc(cal.note)}`:''}">📅 ${esc(cal.label)}</span>${cal.note?`<span class="weeknote">${esc(cal.note)}</span>`:''}` : '';
+    w.innerHTML=`<div class="weekhead"><div class="weektitle"><div><strong>Учебна седмица ${week}</strong>${calHtml}</div></div><span class="small weekprogress">${currentLabel()}: ${wd}/${weekAll.length} взети</span></div>`;
 
     for(const l of lessons){
       const d=document.createElement('div');
