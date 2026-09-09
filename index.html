@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="bg">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0f7f8f" />
+  <title>Учебен план – Математика</title>
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" href="icons/icon-192.png" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+  <style>
+    :root{--bg:#f4f8fa;--card:#fff;--ink:#17323a;--muted:#667b83;--accent:#0f7f8f;--accent2:#16a3b8;--line:#dce8ec;--ok:#218b55;--warn:#a76500;--danger:#b23a3a;--shadow:0 8px 24px rgba(26,64,74,.08)}
+    *{box-sizing:border-box} body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink)}
+    button,input,textarea,select{font:inherit} button{cursor:pointer}
+    header{position:sticky;top:0;z-index:10;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;padding:14px 16px;box-shadow:0 4px 18px rgba(0,0,0,.12)}
+    .headrow{max-width:1100px;margin:auto;display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+    h1{font-size:1.15rem;margin:0}.sub{font-size:.82rem;opacity:.92}
+    .head-actions{display:flex;gap:8px;flex-wrap:wrap}.head-actions button{border:1px solid rgba(255,255,255,.45);background:rgba(255,255,255,.14);color:white;border-radius:10px;padding:8px 11px}
+    main{max-width:1100px;margin:18px auto;padding:0 14px 40px}
+    .toolbar{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;margin-bottom:14px}.tabs{display:flex;gap:6px}.tab{border:1px solid var(--line);background:var(--card);border-radius:12px;padding:9px 14px;font-weight:700;color:var(--ink)}.tab.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+    .search{width:100%;border:1px solid var(--line);background:white;border-radius:12px;padding:10px 12px}.filter{border:1px solid var(--line);background:white;border-radius:12px;padding:10px}
+    .summary{display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 16px;box-shadow:var(--shadow);margin-bottom:14px}.progress{height:12px;background:#e7f0f2;border-radius:999px;overflow:hidden;margin-top:8px}.bar{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));width:0}.pct{font-weight:800;font-size:1.2rem;color:var(--accent)}
+    .week{background:var(--card);border:1px solid var(--line);border-radius:16px;margin:12px 0;box-shadow:var(--shadow);overflow:hidden}.weekhead{padding:11px 14px;background:#eef7f8;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between}.weekhead strong{color:var(--accent)}
+    .lesson{display:grid;grid-template-columns:38px 74px 1fr auto;gap:10px;align-items:start;padding:12px 14px;border-bottom:1px solid #edf2f4}.lesson:last-child{border-bottom:none}.lesson.done{background:#f2fbf6}.lesson input[type=checkbox]{width:22px;height:22px;accent-color:var(--ok);margin-top:3px}.num{color:var(--muted);font-size:.88rem;padding-top:4px}.title{font-weight:650}.meta{font-size:.82rem;color:var(--muted);margin-top:4px}.tag{display:inline-block;font-size:.72rem;font-weight:700;border-radius:999px;padding:3px 7px;background:#e8f5f7;color:var(--accent);margin-left:6px}.editbtn{border:1px solid var(--line);background:white;border-radius:9px;padding:6px 9px;color:var(--ink)}
+    .details{grid-column:3/5;display:none;gap:8px;grid-template-columns:160px 1fr;margin-top:5px}.details .wide{grid-column:1/-1}.details .autosave{grid-column:1/-1;font-size:.76rem;color:var(--muted)}.lesson.open .details{display:grid}.details input,.details textarea{border:1px solid var(--line);border-radius:9px;padding:8px;background:white}.details textarea{min-height:64px;resize:vertical}.details label{font-size:.78rem;color:var(--muted);display:block;margin-bottom:3px}
+    .status{font-size:.8rem;padding:6px 9px;border-radius:999px;background:rgba(255,255,255,.15)}
+    .empty{text-align:center;color:var(--muted);padding:34px 10px}
+    dialog{border:none;border-radius:18px;box-shadow:0 30px 80px rgba(0,0,0,.25);width:min(680px,calc(100% - 24px));padding:0;color:var(--ink)}dialog::backdrop{background:rgba(0,0,0,.42)}.modalhead{padding:14px 16px;background:#eef7f8;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}.modalbody{padding:16px}.modalbody h3{margin:8px 0}.modalbody p{color:var(--muted);line-height:1.45}.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}.field{margin:9px 0}.field label{display:block;font-size:.82rem;color:var(--muted);margin-bottom:4px}.field input,.field textarea{width:100%;border:1px solid var(--line);border-radius:10px;padding:10px}.field textarea{min-height:125px;font-family:ui-monospace,Consolas,monospace;font-size:.82rem}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.primary{background:var(--accent);color:white;border:none;border-radius:10px;padding:9px 12px}.secondary{background:white;color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:9px 12px}.danger{background:#fff1f1;color:var(--danger);border:1px solid #f0caca;border-radius:10px;padding:9px 12px}.small{font-size:.8rem;color:var(--muted)}
+    .sync-good{color:#d9ffea}.sync-bad{color:#ffe3bc}
+    @media(max-width:720px){.toolbar{grid-template-columns:1fr}.summary{grid-template-columns:1fr auto}.lesson{grid-template-columns:34px 58px 1fr auto;padding:11px 10px}.details{grid-column:1/5;grid-template-columns:1fr}.row{grid-template-columns:1fr}.head-actions button{padding:7px 9px}.title{font-size:.93rem}}
+  </style>
+</head>
+<body>
+<header>
+  <div class="headrow">
+    <div><h1>Учебен план – Математика</h1><div class="sub">VIII и IX клас • отметки, бележки и редактиране на темите</div></div>
+    <div class="head-actions">
+      <span id="syncStatus" class="status">Локално</span>
+      <button id="installBtn" hidden>Инсталирай</button>
+      <button id="backupBtn">Архив</button>
+      <button id="syncBtn">Синхронизация</button>
+    </div>
+  </div>
+</header>
+<main>
+  <div class="toolbar">
+    <div class="tabs"><button class="tab active" data-class="8">8. клас</button><button class="tab" data-class="9">9. клас</button></div>
+    <input id="search" class="search" placeholder="Търси тема…" />
+    <select id="filter" class="filter"><option value="all">Всички</option><option value="todo">Невзети</option><option value="done">Взети</option></select>
+  </div>
+  <section class="summary"><div><strong id="sumTitle">8. клас</strong><div class="small" id="sumText"></div><div class="progress"><div id="bar" class="bar"></div></div></div><div id="pct" class="pct">0%</div></section>
+  <div id="weeks"></div>
+</main>
+
+<dialog id="syncDialog">
+  <div class="modalhead"><strong>Синхронизация между телефон и лаптоп</strong><button class="secondary" onclick="this.closest('dialog').close()">Затвори</button></div>
+  <div class="modalbody">
+    <p>Приложението работи и без интернет и пази отметките локално. За автоматична синхронизация на двата Ви устройства се използва Ваш Firebase проект и един и същ профил.</p>
+    <div class="field"><label>Firebase config (поставете целия обект от Firebase → Project settings → Your apps → SDK setup and configuration)</label><textarea id="firebaseConfig" placeholder='{"apiKey":"...","authDomain":"...","projectId":"...", ...}'></textarea></div>
+    <div class="row"><div class="field"><label>Имейл</label><input id="email" type="email" autocomplete="username" /></div><div class="field"><label>Парола</label><input id="password" type="password" autocomplete="current-password" /></div></div>
+    <div class="actions"><button id="saveConfigBtn" class="secondary">Запази настройките</button><button id="loginBtn" class="primary">Вход</button><button id="registerBtn" class="secondary">Създай профил</button><button id="logoutBtn" class="danger">Изход</button></div>
+    <div id="syncMessage" class="small" style="margin-top:10px"></div>
+  </div>
+</dialog>
+
+<dialog id="backupDialog">
+  <div class="modalhead"><strong>Архив и прехвърляне</strong><button class="secondary" onclick="this.closest('dialog').close()">Затвори</button></div>
+  <div class="modalbody">
+    <p>Можете да запазите резервно копие на всички отметки и бележки или да възстановите такова копие.</p>
+    <div class="actions"><button id="exportBtn" class="primary">Изтегли архив (.json)</button><label class="secondary" style="display:inline-flex;align-items:center">Възстанови архив<input id="importFile" type="file" accept="application/json" hidden></label><button id="resetBtn" class="danger">Изчисти отметките</button></div>
+  </div>
+</dialog>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
